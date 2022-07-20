@@ -12,22 +12,23 @@ app.get('/', async (req, res) => {
   const images = [a, b, c, d].filter(i => i);
   const downloadedImages: Buffer[] = [];
 
-  // TODO: Simultaneous download of images
-
-  for (const image of images) {
-    try {
-      const response = await got.get(
-        `https://pbs.twimg.com/media/${image}?format=png&name=large`,
-        {
-          responseType: 'buffer'
-        }
-      );
-      console.log(`Downloaded ${image}`);
-      downloadedImages.push(response.body);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+  // Parallel downloading of an array of images
+  await Promise.all(
+    images.map(async image => {
+      try {
+        const response = await got(`https://pbs.twimg.com/media/${image}?format=png&name=large`, {
+          responseType: 'buffer',
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'
+          }
+        });
+        downloadedImages[images.indexOf(image)] = response.body;
+        console.log(`Downloaded ${image}`);
+      } catch (e) {
+        console.log(`Failed to download ${image}`);
+      }
+    })
+  );
 
   try {
     const result: Buffer = await mosaic(downloadedImages);
