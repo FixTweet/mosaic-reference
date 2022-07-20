@@ -1,3 +1,3 @@
-# pxTwitter Image Combinator
+# pxTwitter Mosaic
 
-This will be an image combinator feature for pxTwitter, but it is not complete.
+An experimental image combiner designed to be used with pxTwitter.
