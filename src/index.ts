@@ -35,6 +35,7 @@ app.get('/', async (req, res) => {
 
     // Send buffer with webp mime
     res.setHeader('Content-Type', 'image/webp');
+    res.setHeader('Cache-Control', 'public, max-age=31536000');
     res.send(result);
   } catch (e) {
     console.log(e);
