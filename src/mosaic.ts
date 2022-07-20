@@ -87,8 +87,10 @@ export const mosaic = async (images: Buffer[]) => {
 
     if (topSize.width > bottomSize.width) {
       bottom2 = await sharp(bottom2).resize({ width: topSize.width }).toBuffer();
+      bottomSize = sizeOf(bottom2);
     } else if (topSize.width < bottomSize.width) {
       top2 = await sharp(top2).resize({ width: bottomSize.width }).toBuffer();
+      topSize = sizeOf(top2);
     }
 
     let newBackground = await createBackground(
