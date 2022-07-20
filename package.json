@@ -1,5 +1,5 @@
 {
-  "name": "pxtwitter-combinator",
+  "name": "pxtwitter-mosaic",
   "version": "1.0.0",
   "description": "Experimental image combiner helper for pxTwitter",
   "main": "src/index.js",
@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dangeredwolf/pxTwitter-Combinator"
+    "url": "git+https://github.com/dangeredwolf/pxTwitter-Mosaic"
   },
   "author": "dangered wolf",
   "license": "MIT",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/dangeredwolf/pxTwitter-Combinator/issues"
+    "url": "https://github.com/dangeredwolf/pxTwitter-Mosaic/issues"
   },
   "homepage": "https://pxtwitter.com",
   "dependencies": {
