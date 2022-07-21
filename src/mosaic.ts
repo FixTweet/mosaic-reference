@@ -12,7 +12,7 @@ const createBackground = async (x: number, y: number) =>
       background: { r: 0, g: 0, b: 0, alpha: 255 }
     }
   })
-    .webp({ quality: 90 })
+    .png()
     .toBuffer();
 
 const combine2Images = async (images: Buffer[]) => {
