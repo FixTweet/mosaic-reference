@@ -8,6 +8,10 @@ const fakeChromeVersion = '103';
 // Basic express setup
 const app = express();
 
+app.get('/ping', (_req, res) => {
+  res.send('Hello!');
+})
+
 app.get('/', async (req, res) => {
   const { a, b, c, d } = req.query;
   console.log(a, b, c, d);
