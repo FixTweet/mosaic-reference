@@ -18,6 +18,11 @@ app.get('/', async (req, res) => {
   const images = [a, b, c, d].filter(i => i);
   const downloadedImages: Buffer[] = [];
 
+  if (images.length === 0) {
+    res.send(`pxTwitter Mosaic running on ${process.platform} ${process.arch}`);
+    return;
+  }
+
   // Parallel downloading of an array of images
   await Promise.all(
     images.map(async image => {
