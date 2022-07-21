@@ -8,9 +8,11 @@ const fakeChromeVersion = '103';
 // Basic express setup
 const app = express();
 
-app.get('/ping', (_req, res) => {
-  res.send('Hello!');
-})
+const defaultResponse = (res: any) => {
+  res.end(`pxTwitter Mosaic running on ${process.platform} ${process.arch}`);
+}
+
+app.get('/ping', (_req, res) => defaultResponse(res))
 
 app.get('/', async (req, res) => {
   const { a, b, c, d } = req.query;
@@ -19,8 +21,7 @@ app.get('/', async (req, res) => {
   const downloadedImages: Buffer[] = [];
 
   if (images.length === 0) {
-    res.send(`pxTwitter Mosaic running on ${process.platform} ${process.arch}`);
-    return;
+    return defaultResponse(res);
   }
 
   // Parallel downloading of an array of images
