@@ -14,8 +14,8 @@ const defaultResponse = (res: any) => {
 
 app.get('/ping', (_req, res) => defaultResponse(res))
 
-app.get('/', async (req, res) => {
-  const { a, b, c, d } = req.query;
+const mosaicHandler = async (req: any, res: any) => {
+  const { a, b, c, d } = req.params;
   console.log(a, b, c, d);
   const images = [a, b, c, d].filter(i => i);
   const downloadedImages: Buffer[] = [];
@@ -69,6 +69,11 @@ app.get('/', async (req, res) => {
     console.log(e);
     res.status(500).end();
   }
-});
+}
+
+app.get('/:id/:a', mosaicHandler);
+app.get('/:id/:a/:b', mosaicHandler);
+app.get('/:id/:a/:b/:c', mosaicHandler);
+app.get('/:id/:a/:b/:c/:d', mosaicHandler);
 
 app.listen(process.env.LISTEN_PORT, () => {});
