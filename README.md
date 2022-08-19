@@ -1,3 +1,5 @@
-# pxTwitter Mosaic (TypeScript Reference)
+# FixTweet Mosaic (TypeScript Reference)
 
-An experimental image combiner designed to be used with pxTwitter.
+The original TypeScript implementation of Mosaic (the multi-image combiner).
+
+This has been supplanted by the version written in [Rust](https://github.com/FixTweet/mosaic), so this repository is now archived.
